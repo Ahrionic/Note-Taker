@@ -5,11 +5,12 @@ const { uid } = require('uid')
 
 let notes = require('../db/db.json')
 
-
+// allows you to get the notes
 router.get('/notes', (req, res) => {
   res.json(notes)
 })
 
+// allows you to post notes
 router.post('/notes', (req, res) => {
   let noteData = {
     title: req.body.title,
@@ -17,6 +18,7 @@ router.post('/notes', (req, res) => {
     id: uid()
   }
 
+  // pushes the notes to save to the database
   notes.push(noteData)
   fs.writeFile(join(__dirname,'..', 'db', 'db.json'), JSON.stringify(notes), err => {
     if (err) { console.log(err) }
@@ -24,6 +26,7 @@ router.post('/notes', (req, res) => {
   })
 })
 
+// deletes the notes from the database
 router.delete('/notes/:id', (req, res) => {
   notes = notes.filter(note => note.id !== req.params.id)
   fs.writeFile(join(__dirname,'..', 'db', 'db.json'), JSON.stringify(notes), err => {
