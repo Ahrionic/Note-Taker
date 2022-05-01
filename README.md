@@ -19,7 +19,7 @@
   Express routes
   ***
   ## Visual Presentation
-  ![VisualPresentation](images\notetaker.jpg)
+  ![VisualPresentation](images/notetaker.jpg)
   ***
   ## Installation
   You should be able to access through a url.
